@@ -2,7 +2,7 @@
 % Please edit documentation in R/siriemashapes.R
 \name{siriemashapes}
 \alias{siriemashapes}
-\title{Line}
+\title{siriemashapes}
 \usage{
 siriemashapes(line_path, crs, events_path, hotspots_path)
 }
@@ -16,5 +16,5 @@ siriemashapes(line_path, crs, events_path, hotspots_path)
 \item{hotspots_path}{Hotspot results obtained from Siriema - txt or dat file.}
 }
 \description{
-Calculates two number of classes of Fisher-Jenks algorithm
+Creates complete dataframe/shapefile from Hotspots results obtained from Siriema software
 }

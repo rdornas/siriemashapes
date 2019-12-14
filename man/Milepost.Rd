@@ -14,5 +14,5 @@ Milepost(road, distance, dist_or_n = "dist")
 \item{dist_or_n}{Selects distance of stakes or number of stakes}
 }
 \description{
-Calculates two number of classes of Fisher-Jenks algorithm
+Creates a staking system from a line shapefile
 }

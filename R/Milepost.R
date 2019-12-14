@@ -1,6 +1,6 @@
 #' Milepost
 #'
-#' Calculates two number of classes of Fisher-Jenks algorithm
+#' Creates a staking system from a line shapefile
 #'
 #' @param road Road shapefile.
 #' @param distance Distance of stakes.
