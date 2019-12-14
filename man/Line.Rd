@@ -12,5 +12,5 @@ Line(line_path, crs)
 \item{crs}{Coordinate system used. Preferably EPSG.}
 }
 \description{
-Calculates two number of classes of Fisher-Jenks algorithm
+Reads line from txt used in Siriema
 }

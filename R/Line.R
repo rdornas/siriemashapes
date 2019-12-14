@@ -1,6 +1,6 @@
 #' Line
 #'
-#' Calculates two number of classes of Fisher-Jenks algorithm
+#' Reads line from txt used in Siriema
 #'
 #' @param line_path Line used in Siriema - txt file.
 #' @param crs Coordinate system used. Preferably EPSG.

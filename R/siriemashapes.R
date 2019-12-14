@@ -1,6 +1,6 @@
-#' Line
+#' siriemashapes
 #'
-#' Calculates two number of classes of Fisher-Jenks algorithm
+#' Creates complete dataframe/shapefile from Hotspots results obtained from Siriema software
 #'
 #' @param line_path Line used in Siriema - txt file.
 #' @param crs Coordinate system used. Preferably EPSG.
