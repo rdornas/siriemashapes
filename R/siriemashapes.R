@@ -71,7 +71,7 @@ siriemashapes <- function(line_path,
     count(ID, name = "NEvents") %>%
     left_join(Shape, ., by = "ID")
 
-  df_final <- siriemashapes:::FJenks(Shape)
+  df_final <- FJenks(Shape)
 
   return(df_final)
 }
