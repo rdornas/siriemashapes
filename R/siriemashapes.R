@@ -16,13 +16,6 @@ siriemashapes <- function(line_path,
                           hotspot_path,
                           crs
 ){
-  # suppressPackageStartupMessages({
-  #   require(classInt)
-  #   require(sf)
-  #   require(tibble)
-  #   require(dplyr)
-  # })
-
   message("Sit down comfortably. This may take a while...")
 
   Road <- Line(line_path = line_path, crs = crs)

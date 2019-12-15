@@ -2,3 +2,4 @@
 
 export(Milepost)
 export(siriemashapes)
+importFrom(magrittr,"%>%")
