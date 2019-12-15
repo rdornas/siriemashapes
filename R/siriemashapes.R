@@ -16,7 +16,6 @@ siriemashapes <- function(line_path,
 ){
   suppressPackageStartupMessages({
     require(classInt)
-    require(magrittr)
     require(sf)
     require(tibble)
     require(dplyr)
@@ -68,14 +67,22 @@ siriemashapes <- function(line_path,
     mutate(Hot = case_when(`HS-UCL` <= 0 ~ "N",
                            TRUE ~ "S"))
 
-  Shape %<>%
+  Shape2 <- Shape %>%
     st_buffer(., dist = 1, endCapStyle = "FLAT") %>%
     st_join(., Events) %>%
     st_drop_geometry(.) %>%
     count(ID, name = "NEvents") %>%
     left_join(Shape, ., by = "ID")
 
-  df_final <- FJenks(Shape)
+  shapefile <- FJenks(Shape2)
 
-  return(df_final)
+  species_df <- Shape %>%
+    st_buffer(., dist = 1, endCapStyle = "FLAT") %>%
+    select(ID, geometry) %>%
+    st_join(., Events) %>%
+    st_drop_geometry(.) %>%
+    count(ID, Sp)
+
+  list(shapefile = shapefile, species_df = species_df)
+  #return(df_final)
 }
