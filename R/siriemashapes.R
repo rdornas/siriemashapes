@@ -3,9 +3,9 @@
 #' Creates complete dataframe/shapefile from Hotspots results obtained from Siriema software
 #'
 #' @param line_path Line used in Siriema - txt file.
-#' @param crs Coordinate system used. Preferably EPSG.
 #' @param events_path Events used in Siriema - txt file.
 #' @param hotspot_path Hotspot results obtained from Siriema - txt or dat file.
+#' @param crs Coordinate system used. Preferably EPSG.
 #'
 #' @export
 
