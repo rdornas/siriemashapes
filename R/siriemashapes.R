@@ -5,7 +5,7 @@
 #' @param line_path Line used in Siriema - txt file.
 #' @param crs Coordinate system used. Preferably EPSG.
 #' @param events_path Events used in Siriema - txt file.
-#' @param hotspots_path Hotspot results obtained from Siriema - txt or dat file.
+#' @param hotspot_path Hotspot results obtained from Siriema - txt or dat file.
 #'
 #' @export
 
