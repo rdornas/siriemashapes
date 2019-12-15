@@ -4,7 +4,7 @@
 \alias{siriemashapes}
 \title{siriemashapes}
 \usage{
-siriemashapes(line_path, crs, events_path, hotspots_path)
+siriemashapes(line_path, crs, events_path, hotspot_path)
 }
 \arguments{
 \item{line_path}{Line used in Siriema - txt file.}
@@ -13,7 +13,7 @@ siriemashapes(line_path, crs, events_path, hotspots_path)
 
 \item{events_path}{Events used in Siriema - txt file.}
 
-\item{hotspots_path}{Hotspot results obtained from Siriema - txt or dat file.}
+\item{hotspot_path}{Hotspot results obtained from Siriema - txt or dat file.}
 }
 \description{
 Creates complete dataframe/shapefile from Hotspots results obtained from Siriema software

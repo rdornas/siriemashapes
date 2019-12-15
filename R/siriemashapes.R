@@ -13,22 +13,23 @@ siriemashapes <- function(line_path,
                           crs,
                           events_path,
                           hotspot_path
-){
+){require(classInt)
+  require(data.table)
 
-  Road <- siriemashapes:::Line(line_path = line_path, crs = crs)
+  Road <- Line(line_path = line_path, crs = crs)
 
   # staking the line feature ----
-  Stake <- siriemashapes::Milepost(Road, 1) %>%
+  Stake <- Milepost(Road, 1) %>%
     mutate(km = as.character(m/1000))
 
   # reading events feature (same fashion as from Siriema) ----
-  Events <- siriemashapes:::Events(events_path)
+  Events <- Events(events_path)
 
   # establishing first data frame from files uploaded ----
-  df_hotspot <- data.table::fread(hotspot_path,
-                                  encoding = "Latin-1",
-                                  check.names = T,
-                                  data.table = F) %>%
+  df_hotspot <- fread(hotspot_path,
+                      encoding = "Latin-1",
+                      check.names = T,
+                      data.table = F) %>%
     select_if(is.numeric) %>%
     `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
     mutate(`HS-UCL` = HS - UCL,
