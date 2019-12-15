@@ -20,6 +20,7 @@ siriemashapes <- function(line_path,
   #   require(tibble)
   #   require(dplyr)
   # })
+  usethis::use_pipe(export = T)
 
   message("Sit down comfortably. This may take a while...")
 
