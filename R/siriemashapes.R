@@ -5,7 +5,7 @@
 #' @param line_path Line used in Siriema - txt file.
 #' @param events_path Events used in Siriema - txt file.
 #' @param hotspot_path Hotspot results obtained from Siriema - txt or dat file.
-#' @param crs Coordinate system used. Preferably EPSG.
+#' @param crs Coordinate system used. Strongly recommended the use of EPSG.
 #'
 #' @export
 
@@ -60,7 +60,7 @@ siriemashapes <- function(line_path,
   # creating shape from files ----
   Shape <- Road %>%
     lwgeom::st_split(., cut) %>%
-    lwgeom::st_collection_extract(., "LINESTRING") %>%
+    st_collection_extract(., "LINESTRING") %>%
     mutate(length = as.numeric(round(st_length(.), digits = 3))) %>%
     filter(length > .001) %>%
     rowid_to_column(., "ID") %>%
