@@ -10,9 +10,9 @@
 #' @export
 
 siriemashapes <- function(line_path,
-                          crs,
                           events_path,
-                          hotspot_path
+                          hotspot_path,
+                          crs
 ){
   require(classInt, quietly = T, warn.conflicts = F)
   #require(data.table, quietly = T, warn.conflicts = F)
@@ -29,7 +29,7 @@ siriemashapes <- function(line_path,
     mutate(km = as.character(m/1000))
 
   # reading events feature (same fashion as from Siriema) ----
-  Events <- Events(events_path)
+  Events <- Events(events_path = events_path, crs = crs)
 
   # establishing first data frame from files uploaded ----
   df_hotspot <- data.table::fread(hotspot_path,
@@ -55,7 +55,7 @@ siriemashapes <- function(line_path,
     select(ID, X_iniline, Y_iniline) %>%
     filter(!is.na(X_iniline)) %>%
     st_as_sf(., coords = c("X_iniline", "Y_iniline"), remove = F, crs = crs) %>%
-    st_buffer(., dist = 0.001)
+    st_buffer(., dist = 0.0001)
 
   # creating shape from files ----
   Shape <- Road %>%

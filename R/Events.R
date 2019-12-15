@@ -7,8 +7,9 @@
 Events <- function(events_path, crs){
   read.table(events_path) %>%
     as_tibble(.) %>%
+    mutate(Sp = stringr::str_c(V4, V5, sep = " ")) %>%
     rename(X = V1,
            Y = V2) %>%
-    select(-V3) %>%
+    select(-V3, -V4, -V5) %>%
     st_as_sf(., coords = c("X", "Y"), crs = crs, remove = F)
 }
