@@ -84,5 +84,4 @@ siriemashapes <- function(line_path,
     count(ID, Sp)
 
   list(shapefile = shapefile, species_df = species_df)
-  #return(df_final)
 }
