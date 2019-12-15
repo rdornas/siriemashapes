@@ -15,6 +15,11 @@ siriemashapes <- function(line_path,
                           hotspot_path
 ){require(classInt)
   require(data.table)
+  require(magrittr)
+  require(sf)
+  require(lwgeom)
+  require(tibble)
+  require(dplyr)
 
   Road <- Line(line_path = line_path, crs = crs)
 
