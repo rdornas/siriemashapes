@@ -24,13 +24,13 @@ siriemashapes <- function(line_path,
 
 
   # reading line feature (same fashion as from Siriema) ----
-  Line <- function(line_path, crs){
-    read.table(line_path) %>%
-      as_tibble(.) %>%
-      st_as_sf(., coords = c("V1", "V2"), remove = F, crs = crs) %>%
-      summarise(do_union = FALSE) %>%
-      st_cast(., "LINESTRING")
-  }
+  # Line <- function(line_path, crs){
+  #   read.table(line_path) %>%
+  #     as_tibble(.) %>%
+  #     st_as_sf(., coords = c("V1", "V2"), remove = F, crs = crs) %>%
+  #     summarise(do_union = FALSE) %>%
+  #     st_cast(., "LINESTRING")
+  # }
 
   Road <- siriemashapes::Line(line_path = line_path, crs = crs)
 
