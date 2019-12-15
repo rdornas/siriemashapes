@@ -32,12 +32,10 @@ siriemashapes <- function(line_path,
       st_cast(., "LINESTRING")
   }
 
-  Road <- Line(line_path = line_path, crs = crs)
+  Road <- siriemashapes::Line(line_path = line_path, crs = crs)
 
   # staking the line feature ----
-  siriemashapes::Milepost.R
-
-  Stake <- Milepost(Road, 1) %>%
+    Stake <- siriemashapes::Milepost(Road, 1) %>%
     mutate(km = as.character(m/1000))
 
   # reading events feature (same fashion as from Siriema) ----
@@ -46,7 +44,6 @@ siriemashapes <- function(line_path,
   Events <- Events(events_path)
 
   # establishing first data frame from files uploaded ----
-
   df_hotspot <- fread(hotspot_path,
                       encoding = "Latin-1",
                       check.names = T,
