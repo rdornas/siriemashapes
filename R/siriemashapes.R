@@ -13,39 +13,22 @@ siriemashapes <- function(line_path,
                           crs,
                           events_path,
                           hotspots_path
-)
-{
-  require(data.table, quietly = T, warn.conflicts = F)
-  require(sf, quietly = T, warn.conflicts = F)
-  require(lwgeom, quietly = T, warn.conflicts = F)
-  require(magrittr, quietly = T, warn.conflicts = F)
-  require(dplyr, quietly = T, warn.conflicts = F)
-  require(tibble, quietly = T, warn.conflicts = F)
-
-
-  # reading line feature (same fashion as from Siriema) ----
-  # Line <- function(line_path, crs){
-  #   read.table(line_path) %>%
-  #     as_tibble(.) %>%
-  #     st_as_sf(., coords = c("V1", "V2"), remove = F, crs = crs) %>%
-  #     summarise(do_union = FALSE) %>%
-  #     st_cast(., "LINESTRING")
-  # }
+){
 
   Road <- siriemashapes:::Line(line_path = line_path, crs = crs)
 
   # staking the line feature ----
-    Stake <- siriemashapes::Milepost(Road, 1) %>%
+  Stake <- siriemashapes::Milepost(Road, 1) %>%
     mutate(km = as.character(m/1000))
 
   # reading events feature (same fashion as from Siriema) ----
-    Events <- siriemashapes:::Events(events_path)
+  Events <- siriemashapes:::Events(events_path)
 
   # establishing first data frame from files uploaded ----
-  df_hotspot <- fread(hotspot_path,
-                      encoding = "Latin-1",
-                      check.names = T,
-                      data.table = F) %>%
+  df_hotspot <- data.table::fread(hotspot_path,
+                                  encoding = "Latin-1",
+                                  check.names = T,
+                                  data.table = F) %>%
     select_if(is.numeric) %>%
     `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
     mutate(`HS-UCL` = HS - UCL,
@@ -87,5 +70,7 @@ siriemashapes <- function(line_path,
     count(ID, name = "NEvents") %>%
     left_join(Shape, ., by = "ID")
 
-  siriemashapes:::FJenks(Shape)
+  df_final <- siriemashapes:::FJenks(Shape)
+
+  return(df_final)
 }
