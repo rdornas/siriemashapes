@@ -7,6 +7,8 @@
 #' @param hotspot_path Hotspot results obtained from Siriema - txt or dat file.
 #' @param crs Coordinate system used. Strongly recommended the use of EPSG.
 #'
+#' @importFrom magrittr "%>%"
+#'
 #' @export
 
 siriemashapes <- function(line_path,
@@ -20,7 +22,6 @@ siriemashapes <- function(line_path,
   #   require(tibble)
   #   require(dplyr)
   # })
-  usethis::use_pipe(export = T)
 
   message("Sit down comfortably. This may take a while...")
 
