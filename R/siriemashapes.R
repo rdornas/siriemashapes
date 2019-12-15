@@ -24,12 +24,18 @@ siriemashapes <- function(line_path,
 
 
   # reading line feature (same fashion as from Siriema) ----
-  source("Line.R")
+  Line <- function(line_path, crs){
+    read.table(line_path) %>%
+      as_tibble(.) %>%
+      st_as_sf(., coords = c("V1", "V2"), remove = F, crs = crs) %>%
+      summarise(do_union = FALSE) %>%
+      st_cast(., "LINESTRING")
+  }
 
   Road <- Line(line_path = line_path, crs = crs)
 
   # staking the line feature ----
-  source("Milepost.R")
+  siriemashapes::Milepost.R
 
   Stake <- Milepost(Road, 1) %>%
     mutate(km = as.character(m/1000))
