@@ -31,11 +31,11 @@ siriemashapes <- function(line_path,
   Events <- Events(events_path = events_path, crs = crs)
 
   # establishing first data frame from files uploaded ----
-  df_hotspot <- data.table::fread(hotspot_path,
-                                  encoding = "Latin-1",
-                                  check.names = T,
-                                  data.table = F,
-                                  fill = T) %>%
+  suppressWarnings({df_hotspot <- data.table::fread(hotspot_path,
+                                                    encoding = "Latin-1",
+                                                    check.names = T,
+                                                    #fill = T,
+                                                    data.table = F) %>%
     select_if(is.numeric) %>%
     `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
     mutate(`HS-UCL` = HS - UCL,
@@ -49,7 +49,7 @@ siriemashapes <- function(line_path,
     left_join(., select(Stake, X, Y, km), by = c("km_char" = "km"), suffix = c("", "_orig")) %>%
     rowid_to_column(., "ID") %>%
     select(ID, km_round, km_char, X, Y, X_orig, Y_orig, everything(.))
-
+  })
   # cutting df_hotspots ----
   cut <- df_hotspot %>%
     select(ID, X_iniline, Y_iniline) %>%
