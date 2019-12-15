@@ -4,16 +4,16 @@
 \alias{siriemashapes}
 \title{siriemashapes}
 \usage{
-siriemashapes(line_path, crs, events_path, hotspot_path)
+siriemashapes(line_path, events_path, hotspot_path, crs)
 }
 \arguments{
 \item{line_path}{Line used in Siriema - txt file.}
 
-\item{crs}{Coordinate system used. Preferably EPSG.}
-
 \item{events_path}{Events used in Siriema - txt file.}
 
 \item{hotspot_path}{Hotspot results obtained from Siriema - txt or dat file.}
+
+\item{crs}{Coordinate system used. Strongly recommended the use of EPSG.}
 }
 \description{
 Creates complete dataframe/shapefile from Hotspots results obtained from Siriema software
