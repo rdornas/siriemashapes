@@ -15,4 +15,4 @@ devtools::install_github('rdornas/siriemashapes')
 
 siriemashapes has a function of the same name that requires the input of the original files used in the Hotspot analysis (road and events text files) as well as the original result file obtained in Siriema (txt or dat file). Last but not least is the coordinate system information in the crs argument. **It is highly recommend entering the EPSG number which can be searched and found at https://epsg.io/.**
 
-The event file is expected to have the default columns, X, Y, Z, but also the species column, right after column Z.
+The event file must have the default columns, X, Y, Z, and also the species column, right after column Z.
