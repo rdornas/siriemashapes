@@ -6,7 +6,7 @@
 #' @param crs Coordinate system used. Strongly recommended the use of EPSG.
 
 Events <- function(events_path, crs){
-  read.table(Events_path, stringsAsFactors = F) %>%
+  read.table(events_path, stringsAsFactors = F) %>%
     as_tibble(.) %>%
     tidyr::unite(., col = "Sp", sep = " ", 4:ncol(.)) %>%
     mutate_if(is.character, stringr::str_squish) %>%
