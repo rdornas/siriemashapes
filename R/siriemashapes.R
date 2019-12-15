@@ -87,5 +87,5 @@ siriemashapes <- function(line_path,
     count(ID, name = "NEvents") %>%
     left_join(Shape, ., by = "ID")
 
-  FJenks(Shape)
+  siriemashapes:::FJenks(Shape)
 }
