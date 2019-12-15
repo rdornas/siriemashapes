@@ -8,6 +8,7 @@
 #' @param crs Coordinate system used. Strongly recommended the use of EPSG.
 #'
 #' @importFrom magrittr "%>%"
+#' @importFrom dplyr "as_tibble"
 #'
 #' @export
 
