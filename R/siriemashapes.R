@@ -13,13 +13,13 @@ siriemashapes <- function(line_path,
                           crs,
                           events_path,
                           hotspot_path
-){require(classInt)
-  require(data.table)
-  require(magrittr)
-  require(sf)
-  require(lwgeom)
-  require(tibble)
-  require(dplyr)
+){require(classInt, quietly = T, warn.conflicts = F)
+  require(data.table, quietly = T, warn.conflicts = F)
+  require(magrittr, quietly = T, warn.conflicts = F)
+  require(sf, quietly = T, warn.conflicts = F)
+  require(lwgeom, quietly = T, warn.conflicts = F)
+  require(tibble, quietly = T, warn.conflicts = F)
+  require(dplyr, quietly = T, warn.conflicts = F)
 
   Road <- Line(line_path = line_path, crs = crs)
 
