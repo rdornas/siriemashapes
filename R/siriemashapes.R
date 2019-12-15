@@ -87,8 +87,7 @@ siriemashapes <- function(line_path,
     count(ID, Sp, sort = T) %>%
     filter(!is.na(Sp))
 
-  list(shapefile = shapefile, species_df = species_df)
-
   message("Done!")
 
+  list(shapefile = shapefile, species_df = species_df)
 }
