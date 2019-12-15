@@ -54,7 +54,7 @@ siriemashapes <- function(line_path,
   cut <- df_hotspot %>%
     select(ID, X_iniline, Y_iniline) %>%
     filter(!is.na(X_iniline)) %>%
-    st_as_sf(., coords = c("X_iniline", "Y_iniline"), remove = F, crs = 31982) %>%
+    st_as_sf(., coords = c("X_iniline", "Y_iniline"), remove = F, crs = crs) %>%
     st_buffer(., dist = 0.001)
 
   # creating shape from files ----

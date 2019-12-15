@@ -1,5 +1,5 @@
 Package: siriemashapes
-Title: Create complete dataframe/shapefiles from Siriema Hotspot results.
+Title: Create complete dataframe/shapefiles from Siriema's Hotspot results
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Rubem",
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "rapdornas@gmail.com",
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Create complete dataframe/shapefiles from Siriema Hotspot results.
+Description: This package is intended to be used with Siriema's Hotspot results in order to give several results, including dataframes and shapefiles
 License: MIT
 Encoding: UTF-8
 LazyData: true
