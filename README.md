@@ -9,3 +9,5 @@ To install the package:
 ```
 devtools::install_github('rdornas/siriemashapes')
 ```
+
+WARNING: For best (and accurate) results, it is strongly recommended that the Hotspot analysis be performed taking into account the number of divisions set to double the radius.
