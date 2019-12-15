@@ -13,11 +13,12 @@ siriemashapes <- function(line_path,
                           crs,
                           events_path,
                           hotspot_path
-){require(classInt, quietly = T, warn.conflicts = F)
-  require(data.table, quietly = T, warn.conflicts = F)
+){
+  require(classInt, quietly = T, warn.conflicts = F)
+  #require(data.table, quietly = T, warn.conflicts = F)
   require(magrittr, quietly = T, warn.conflicts = F)
   require(sf, quietly = T, warn.conflicts = F)
-  require(lwgeom, quietly = T, warn.conflicts = F)
+  #require(lwgeom, quietly = T, warn.conflicts = F)
   require(tibble, quietly = T, warn.conflicts = F)
   require(dplyr, quietly = T, warn.conflicts = F)
 
@@ -31,10 +32,10 @@ siriemashapes <- function(line_path,
   Events <- Events(events_path)
 
   # establishing first data frame from files uploaded ----
-  df_hotspot <- fread(hotspot_path,
-                      encoding = "Latin-1",
-                      check.names = T,
-                      data.table = F) %>%
+  df_hotspot <- data.table::fread(hotspot_path,
+                                  encoding = "Latin-1",
+                                  check.names = T,
+                                  data.table = F) %>%
     select_if(is.numeric) %>%
     `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
     mutate(`HS-UCL` = HS - UCL,
@@ -58,8 +59,8 @@ siriemashapes <- function(line_path,
 
   # creating shape from files ----
   Shape <- Road %>%
-    st_split(., cut) %>%
-    st_collection_extract(., "LINESTRING") %>%
+    lwgeom::st_split(., cut) %>%
+    lwgeom::st_collection_extract(., "LINESTRING") %>%
     mutate(length = as.numeric(round(st_length(.), digits = 3))) %>%
     filter(length > .001) %>%
     rowid_to_column(., "ID") %>%
