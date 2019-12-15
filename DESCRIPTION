@@ -1,5 +1,5 @@
 Package: siriemashapes
-Title: Create complete dataframe/shapefiles from Siriema's Hotspot results
+Title: Spatial dataframe and species summary from Siriema's Hotspot results
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Rubem",
