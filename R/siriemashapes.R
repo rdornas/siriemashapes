@@ -37,17 +37,17 @@ siriemashapes <- function(line_path,
                                                    data.table = F, ) %>%
                                    select_if(is.numeric) %>%
                                    `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
-                                  mutate(`HS-UCL` = HS - UCL,
-                                         km_round = if_else(duplicated(km), round(km, 3), km)) %>%
-                                  select(km_round, X, Y, HS, UCL, LCL, `HS-UCL`) %>%
-                                  mutate_if(is.double, round, 3) %>%
-                                  as_tibble(.) %>%
-                                  mutate(km_char = as.character(km_round),
-                                         km_med_ini = as.character(cumsum(km_round - lag(km_round, default = .$km_round[1])))) %>%
-                                  left_join(., select(Stake, X, Y, km), by = c("km_med_ini" = "km"), suffix = c("", "_iniline")) %>%
-                                  left_join(., select(Stake, X, Y, km), by = c("km_char" = "km"), suffix = c("", "_orig")) %>%
-                                  rowid_to_column(., "ID") %>%
-                                  select(ID, km_round, km_char, X, Y, X_orig, Y_orig, everything(.))
+                                   mutate(`HS-UCL` = HS - UCL,
+                                          km_round = if_else(duplicated(km), round(km, 3), km)) %>%
+                                   select(km_round, X, Y, HS, UCL, LCL, `HS-UCL`) %>%
+                                   mutate_if(is.double, round, 3) %>%
+                                   as_tibble(.) %>%
+                                   mutate(km_char = as.character(km_round),
+                                          km_med_ini = as.character(cumsum(km_round - lag(km_round, default = .$km_round[1])))) %>%
+                                   left_join(., select(Stake, X, Y, km), by = c("km_med_ini" = "km"), suffix = c("", "_iniline")) %>%
+                                   left_join(., select(Stake, X, Y, km), by = c("km_char" = "km"), suffix = c("", "_orig")) %>%
+                                   rowid_to_column(., "ID") %>%
+                                   select(ID, km_round, km_char, X, Y, X_orig, Y_orig, everything(.))
   )
 
   # cutting df_hotspots ----
