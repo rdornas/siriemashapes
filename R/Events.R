@@ -4,6 +4,10 @@
 #'
 #' @param events_path Select path of events txt file.
 #' @param crs Coordinate system used. Strongly recommended the use of EPSG.
+#'
+#' @import sf
+#' @import tibble
+#' @import dplyr
 
 Events <- function(events_path, crs){
   read.table(events_path, stringsAsFactors = F) %>%

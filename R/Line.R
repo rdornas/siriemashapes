@@ -1,9 +1,12 @@
 #' Line
 #'
-#' Reads line from txt used in Siriema
+#' Reads and uploads txt road file.
 #'
 #' @param line_path Line used in Siriema - txt file.
 #' @param crs Coordinate system used. Preferably EPSG.
+#'
+#' @import sf
+#' @import dplyr
 
 Line <- function(line_path, crs){
   read.table(line_path) %>%

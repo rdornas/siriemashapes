@@ -6,6 +6,9 @@
 #' @param distance Distance of stakes.
 #' @param dist_or_n Selects distance of stakes or number of stakes
 #'
+#' @import sf
+#' @import dplyr
+#'
 #' @export
 
 

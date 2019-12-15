@@ -12,5 +12,5 @@ Line(line_path, crs)
 \item{crs}{Coordinate system used. Preferably EPSG.}
 }
 \description{
-Reads line from txt used in Siriema
+Reads and uploads txt road file.
 }

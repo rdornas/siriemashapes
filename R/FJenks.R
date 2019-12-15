@@ -3,9 +3,11 @@
 #' Calculates two number of classes of Fisher-Jenks algorithm
 #'
 #' @param t Siriema's data frame.
+#'
+#' @import classInt
+#' @import dplyr
 
 FJenks <- function(t){
-  require(classInt)
 
   Fisher5 <- classIntervals(t$`HS-UCL`,
                             n = 5,
