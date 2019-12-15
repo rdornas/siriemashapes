@@ -32,11 +32,11 @@ siriemashapes <- function(line_path,
 
   # establishing first data frame from files uploaded ----
   df_hotspot <- suppressMessages(data.table::fread(hotspot_path,
-                                                  encoding = "Latin-1",
-                                                  check.names = T,
-                                                  data.table = F, ) %>%
-                                  select_if(is.numeric) %>%
-                                  `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
+                                                   encoding = "Latin-1",
+                                                   check.names = T,
+                                                   data.table = F, ) %>%
+                                   select_if(is.numeric) %>%
+                                   `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
                                   mutate(`HS-UCL` = HS - UCL,
                                          km_round = if_else(duplicated(km), round(km, 3), km)) %>%
                                   select(km_round, X, Y, HS, UCL, LCL, `HS-UCL`) %>%
