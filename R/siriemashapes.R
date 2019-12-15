@@ -21,6 +21,8 @@ siriemashapes <- function(line_path,
     require(dplyr)
   })
 
+  message("Sit down comfortably. This may take a while...")
+
   Road <- Line(line_path = line_path, crs = crs)
 
   # staking the line feature ----
@@ -86,4 +88,7 @@ siriemashapes <- function(line_path,
     filter(!is.na(Sp))
 
   list(shapefile = shapefile, species_df = species_df)
+
+  message("Done!")
+
 }
