@@ -12,7 +12,7 @@
 siriemashapes <- function(line_path,
                           crs,
                           events_path,
-                          hotspots_path
+                          hotspot_path
 ){
 
   Road <- siriemashapes:::Line(line_path = line_path, crs = crs)
