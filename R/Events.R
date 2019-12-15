@@ -4,7 +4,7 @@
 #'
 #' @param events_path Select path of events txt file.
 
-Events <- function(events_path){
+Events <- function(events_path, crs){
   read.table(events_path) %>%
     as_tibble(.) %>%
     rename(X = V1,
