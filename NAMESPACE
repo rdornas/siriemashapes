@@ -2,4 +2,5 @@
 
 export(Milepost)
 export(siriemashapes)
+importFrom(dplyr,"as_tibble")
 importFrom(magrittr,"%>%")
