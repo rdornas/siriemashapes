@@ -50,15 +50,13 @@ siriemashapes <- function(line_path,
     select(ID, km_round, km_char, X, Y, X_orig, Y_orig, everything(.))
 
   # cutting df_hotspots ----
-
   cut <- df_hotspot %>%
     select(ID, X_iniline, Y_iniline) %>%
     filter(!is.na(X_iniline)) %>%
-    st_as_sf(., coords = c("X_iniline", "Y_iniline"), remove = F, crs = 31982) %>%
+    st_as_sf(., coords = c("X_iniline", "Y_iniline"), remove = F, crs = crs) %>%
     st_buffer(., dist = 0.001)
 
   # creating shape from files ----
-
   Shape <- Road %>%
     st_split(., cut) %>%
     st_collection_extract(., "LINESTRING") %>%

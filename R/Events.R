@@ -10,5 +10,5 @@ Events <- function(events_path){
     rename(X = V1,
            Y = V2) %>%
     select(-V3) %>%
-    st_as_sf(., coords = c("X", "Y"), crs = 31982, remove = F)
+    st_as_sf(., coords = c("X", "Y"), crs = crs, remove = F)
 }
