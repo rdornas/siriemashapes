@@ -4,10 +4,12 @@
 \alias{Events}
 \title{Events}
 \usage{
-Events(events_path)
+Events(events_path, crs)
 }
 \arguments{
 \item{events_path}{Select path of events txt file.}
+
+\item{crs}{Coordinate system used. Strongly recommended the use of EPSG.}
 }
 \description{
 Reads and uploads txt events file.

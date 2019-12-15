@@ -31,30 +31,31 @@ siriemashapes <- function(line_path,
   Events <- Events(events_path = events_path, crs = crs)
 
   # establishing first data frame from files uploaded ----
-  df_hotspot <- data.table::fread(hotspot_path,
-                                  encoding = "Latin-1",
-                                  check.names = T,
-                                  data.table = F) %>%
-    select_if(is.numeric) %>%
-    `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
-    mutate(`HS-UCL` = HS - UCL,
-           km_round = if_else(duplicated(km), round(km, 3), km)) %>%
-    select(km_round, X, Y, HS, UCL, LCL, `HS-UCL`) %>%
-    mutate_if(is.double, round, 3) %>%
-    as_tibble(.) %>%
-    mutate(km_char = as.character(km_round),
-           km_med_ini = as.character(cumsum(km_round - lag(km_round, default = .$km_round[1])))) %>%
-    left_join(., select(Stake, X, Y, km), by = c("km_med_ini" = "km"), suffix = c("", "_iniline")) %>%
-    left_join(., select(Stake, X, Y, km), by = c("km_char" = "km"), suffix = c("", "_orig")) %>%
-    rowid_to_column(., "ID") %>%
-    select(ID, km_round, km_char, X, Y, X_orig, Y_orig, everything(.))
+  df_hotspot <- suppressMessages(data.table::fread(hotspot_path,
+                                                  encoding = "Latin-1",
+                                                  check.names = T,
+                                                  data.table = F, ) %>%
+                                  select_if(is.numeric) %>%
+                                  `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
+                                  mutate(`HS-UCL` = HS - UCL,
+                                         km_round = if_else(duplicated(km), round(km, 3), km)) %>%
+                                  select(km_round, X, Y, HS, UCL, LCL, `HS-UCL`) %>%
+                                  mutate_if(is.double, round, 3) %>%
+                                  as_tibble(.) %>%
+                                  mutate(km_char = as.character(km_round),
+                                         km_med_ini = as.character(cumsum(km_round - lag(km_round, default = .$km_round[1])))) %>%
+                                  left_join(., select(Stake, X, Y, km), by = c("km_med_ini" = "km"), suffix = c("", "_iniline")) %>%
+                                  left_join(., select(Stake, X, Y, km), by = c("km_char" = "km"), suffix = c("", "_orig")) %>%
+                                  rowid_to_column(., "ID") %>%
+                                  select(ID, km_round, km_char, X, Y, X_orig, Y_orig, everything(.))
+  )
 
   # cutting df_hotspots ----
   cut <- df_hotspot %>%
     select(ID, X_iniline, Y_iniline) %>%
     filter(!is.na(X_iniline)) %>%
     st_as_sf(., coords = c("X_iniline", "Y_iniline"), remove = F, crs = crs) %>%
-    st_buffer(., dist = 0.0001)
+    st_buffer(., dist = 0.00001)
 
   # creating shape from files ----
   Shape <- Road %>%
@@ -68,7 +69,7 @@ siriemashapes <- function(line_path,
                            TRUE ~ "S"))
 
   Shape2 <- Shape %>%
-    st_buffer(., dist = 1, endCapStyle = "FLAT") %>%
+    st_buffer(., dist = 250, endCapStyle = "FLAT") %>%
     st_join(., Events) %>%
     st_drop_geometry(.) %>%
     count(ID, name = "NEvents") %>%
@@ -77,11 +78,12 @@ siriemashapes <- function(line_path,
   shapefile <- FJenks(Shape2)
 
   species_df <- Shape %>%
-    st_buffer(., dist = 1, endCapStyle = "FLAT") %>%
+    st_buffer(., dist = 250, endCapStyle = "FLAT") %>%
     select(ID, geometry) %>%
     st_join(., Events) %>%
     st_drop_geometry(.) %>%
-    count(ID, Sp)
+    count(ID, Sp, sort = T) %>%
+    filter(!is.na(Sp))
 
   list(shapefile = shapefile, species_df = species_df)
 }
