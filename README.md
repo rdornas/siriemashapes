@@ -10,4 +10,9 @@ To install the package:
 devtools::install_github('rdornas/siriemashapes')
 ```
 
-WARNING: For best (and accurate) results, it is strongly recommended that the Hotspot analysis be performed taking into account the number of divisions set to double the radius.
+**WARNING**: For best (and accurate) results, it is strongly recommended that the Hotspot analysis be performed taking into account the number of divisions set to double the radius.
+
+
+siriemashapes has a function of the same name that requires the input of the original files used in the Hotspot analysis (road and events text files) as well as the original result file obtained in Siriema (txt or dat file). Last but not least is the coordinate system information in the crs argument. We highly recommend entering only the searchable EPSG number which can be found at https://epsg.io/.
+
+The event file is expected to have the default columns, X, Y, Z, but also the species column, right after column Z.
