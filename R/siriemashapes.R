@@ -25,7 +25,7 @@
 #' * **UCL**: Upper confidence limit.
 #' * **LCL**: Lower confidence limit.
 #' * **HS-UCL**: Subtraction of aggregation intensity by the upper limit of confidence interval. This is the "real" value of aggregation intensity as it already takes into account what is above the confidence interval.
-#' * **Hotspot**: Information if the sample unit is a hotspot. Y means that \eqn{_HS-UCL_ > 0} and therefore it is already a hotspot.
+#' * **Hotspot**: Information if the sample unit is a hotspot. Y means that \eqn{HS-UCL > 0} and therefore it is already a hotspot.
 #' * **NEvents**: Number of events in the sample unit.
 #' * **Rank**: Rank of aggregation intensity based on _HS-UCL_.
 #' * **FisherJenks3**: Fisher-Jenks classification in three classes (text) based on _HS-UCL_.

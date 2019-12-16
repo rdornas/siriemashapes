@@ -34,7 +34,7 @@ The spatial data frame is called \code{shapefile} and it is composed by the foll
 \item \strong{UCL}: Upper confidence limit.
 \item \strong{LCL}: Lower confidence limit.
 \item \strong{HS-UCL}: Subtraction of aggregation intensity by the upper limit of confidence interval. This is the "real" value of aggregation intensity as it already takes into account what is above the confidence interval.
-\item \strong{Hotspot}: Information if the sample unit is a hotspot. Y means that \eqn{_HS-UCL_ > 0} and therefore it is already a hotspot.
+\item \strong{Hotspot}: Information if the sample unit is a hotspot. Y means that \eqn{HS-UCL > 0} and therefore it is already a hotspot.
 \item \strong{NEvents}: Number of events in the sample unit.
 \item \strong{Rank}: Rank of aggregation intensity based on \emph{HS-UCL}.
 \item \strong{FisherJenks3}: Fisher-Jenks classification in three classes (text) based on \emph{HS-UCL}.
