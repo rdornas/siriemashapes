@@ -10,5 +10,5 @@ FJenks(t)
 \item{t}{Siriema's data frame.}
 }
 \description{
-Calculates two number of classes of Fisher-Jenks algorithm
+Calculates two number of classes of Fisher-Jenks algorithm based on HS-UCL
 }

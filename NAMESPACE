@@ -2,8 +2,5 @@
 
 export(Milepost)
 export(siriemashapes)
-<<<<<<< HEAD
 importFrom(classInt,"classIntervals")
-=======
->>>>>>> 6df3ef01a5c7587dfb1519ff5f2297c62f429153
 importFrom(magrittr,"%>%")
