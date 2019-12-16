@@ -18,7 +18,7 @@ siriemashapes <- function(line_path,
 ){
   message("Sit down comfortably. This may take a while...")
 
-  Road <- Line(line_path = line_path, crs = crs)
+  suppressMessages({Road <- Line(line_path = line_path, crs = crs)
 
   # staking the line feature ----
   Stake <- Milepost(Road, 1) %>%
@@ -83,8 +83,9 @@ siriemashapes <- function(line_path,
     dplyr::select(ID, geometry) %>%
     sf::st_join(., Events) %>%
     sf::st_drop_geometry(.) %>%
-    dplyr::count(ID, Sp, sort = T) %>%
+    dplyr::count(ID, Sp) %>%
     dplyr::filter(!is.na(Sp))
+})
 
   message("Done!")
 

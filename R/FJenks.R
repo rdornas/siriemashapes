@@ -19,7 +19,7 @@ FJenks <- function(t){
                                       dataPrecision = 6)
 
   t %>%
-    dplyr::mutate(Rank = dplyr::min_rank(desc(`HS-UCL`)),
+    dplyr::mutate(Rank = dplyr::min_rank(dplyr::desc(`HS-UCL`)),
                   km_ini = km_round - length/1000/2,
                   km_end = km_round + length/1000/2,
                   FisherJenks3 = dplyr::case_when(`HS-UCL` >= Fisher3$brks[1] & `HS-UCL` <= Fisher3$brks[2] ~ "Low",
