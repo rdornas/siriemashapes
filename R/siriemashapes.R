@@ -5,7 +5,7 @@
 #' @param line_path Line used in Siriema - txt file path.
 #' @param events_path Events used in Siriema - txt file path.
 #' @param hotspot_path Hotspot results obtained from Siriema - txt or dat file path.
-#' @param crs Coordinate reference system. Strongly recommended the use of EPSG.
+#' @param crs Coordinate reference system. Strongly recommended the use of EPSG number.
 #'
 #' @author Rubem Dornas \email{(rapdornas@@gmail.com)}
 #'

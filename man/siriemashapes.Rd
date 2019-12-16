@@ -13,7 +13,7 @@ siriemashapes(line_path, events_path, hotspot_path, crs)
 
 \item{hotspot_path}{Hotspot results obtained from Siriema - txt or dat file path.}
 
-\item{crs}{Coordinate reference system. Strongly recommended the use of EPSG.}
+\item{crs}{Coordinate reference system. Strongly recommended the use of EPSG number.}
 }
 \description{
 Creates complete dataframe/shapefile from Hotspots results obtained from \href{http://www.ufrgs.br/siriema/}{Siriema} software

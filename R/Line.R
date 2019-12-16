@@ -4,6 +4,8 @@
 #'
 #' @param line_path Line used in Siriema - txt file.
 #' @param crs Coordinate system used. Preferably EPSG.
+#'
+#' @importFrom utils "read.table"
 
 
 Line <- function(line_path, crs){
