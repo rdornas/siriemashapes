@@ -18,4 +18,4 @@ The event file **must** have the default columns, X, Y, Z, and also the species 
 
 For the sake of geographical accuracy, analysis can be time consuming, especially on very long highways.
 
-The final result consists in a list containing a spatial data frame from Siriema's Hotspot Analysis as well as a data frame summarising the number of events of each species in each sample unit
+The final result consists in a list containing a spatial data frame from Siriema's Hotspot Analysis as well as a data frame summarising the number of events of each species in each sample unit.
