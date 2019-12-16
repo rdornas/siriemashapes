@@ -1,6 +1,6 @@
 #' siriemashapes
 #'
-#' Creates complete dataframe/shapefile from Hotspots results obtained from \href{http://www.ufrgs.br/siriema/}{Siriema} software
+#' Creates complete dataframe/shapefile from Hotspots results obtained from \href{http://www.ufrgs.br/siriema/}{Siriema} software.
 #'
 #' @param line_path Line used in Siriema - txt file path.
 #' @param events_path Events used in Siriema - txt file path.

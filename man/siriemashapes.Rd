@@ -16,7 +16,7 @@ siriemashapes(line_path, events_path, hotspot_path, crs)
 \item{crs}{Coordinate reference system. Strongly recommended the use of EPSG number.}
 }
 \description{
-Creates complete dataframe/shapefile from Hotspots results obtained from \href{http://www.ufrgs.br/siriema/}{Siriema} software
+Creates complete dataframe/shapefile from Hotspots results obtained from \href{http://www.ufrgs.br/siriema/}{Siriema} software.
 }
 \details{
 \strong{WARNING}: For best (and accurate) results, it is strongly recommended that the Hotspot analysis is performed taking into account the number of divisions set to double of the radius.
