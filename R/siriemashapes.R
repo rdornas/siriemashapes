@@ -5,7 +5,32 @@
 #' @param line_path Line used in Siriema - txt file.
 #' @param events_path Events used in Siriema - txt file.
 #' @param hotspot_path Hotspot results obtained from Siriema - txt or dat file.
-#' @param crs Coordinate system used. Strongly recommended the use of EPSG.
+#' @param crs Coordinate reference system. Strongly recommended the use of EPSG.
+#'
+#' @author Rubem Dornas
+#'
+#' @details
+#' **WARNING**: For best (and accurate) results, it is strongly recommended that the Hotspot analysis is performed taking into account the number of divisions set to double of the radius.
+#'
+#' The function offers a list object containing a spatial data frame with improvements of Siriema's Hotspot Analysis results and a summary of the species found in each sample unit.
+#'
+#' The spatial data frame is called `shapefile` and it is composed by the following fields:
+#'
+#' * **ID**: ID of the sample unit.
+#' * **length**: Length of the sample unit. It is supposed to be very similar to the diameter (double of the radius) of the original Hotspot Analysis.
+#' * **km_cntr**: Central km mark of the sample unit.
+#' * **km_clc_n**: Initial km mark of the sample unit.
+#' * **km_clc_f**: Final km mark of the sample unit.
+#' * **HS**: Aggregation intensity.
+#' * **UCL**: Upper confidence limit.
+#' * **LCL**: Lower confidence limit.
+#' * **HS-UCL**: Subtraction of aggregation intensity by the upper limit of confidence interval. This is the "real" value of aggregation intensity as it already takes into account what is above the confidence interval.
+#' * **NEvents**: Number of eventos in the sample unit.
+#' * **Rank**: Rank of aggregation intensity based on _HS-UCL_
+#' * **FshrJn3**: Rank og aggregation intensity based on _HS-UCL_
+#' * **FJ3**: Rank og aggregation intensity based on _HS-UCL_
+#' * **FshrJn5**: Rank og aggregation intensity based on _HS-UCL_
+#' * **FshrJn3**: Rank og aggregation intensity based on _HS-UCL_
 #'
 #' @importFrom magrittr "%>%"
 #'
@@ -51,6 +76,7 @@ siriemashapes <- function(line_path,
     tibble::rowid_to_column(., "ID") %>%
     dplyr::select(ID, km_round, km_char, X, Y, X_orig, Y_orig, dplyr::everything(.))
   })
+
   # cutting df_hotspots ----
   cut <- df_hotspot %>%
     dplyr::select(ID, X_iniline, Y_iniline) %>%
