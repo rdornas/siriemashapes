@@ -7,14 +7,14 @@
 #' @param hotspot_path Hotspot results obtained from Siriema - txt or dat file path.
 #' @param crs Coordinate reference system. Strongly recommended the use of EPSG.
 #'
-#' @author Rubem Dornas
+#' @author Rubem Dornas \email{rapdornas@@gmail.com}
 #'
 #' @details
 #' **WARNING**: For best (and accurate) results, it is strongly recommended that the Hotspot analysis is performed taking into account the number of divisions set to double of the radius.
 #'
 #' The function offers a large list object containing two elements: a spatial data frame with improvements of Siriema's Hotspot Analysis results and a summary of the species found in each sample unit.
 #'
-#' The spatial data frame is called `shapefile` and it is composed by the following fields:
+#' The spatial data frame is called `shapefile` and it is composed by the following attributes:
 #'
 #' * **ID**: ID of the sample unit.
 #' * **length**: Length of the sample unit. It is supposed to be very similar to the diameter (double of the radius) of the original Hotspot Analysis.
@@ -25,12 +25,18 @@
 #' * **UCL**: Upper confidence limit.
 #' * **LCL**: Lower confidence limit.
 #' * **HS-UCL**: Subtraction of aggregation intensity by the upper limit of confidence interval. This is the "real" value of aggregation intensity as it already takes into account what is above the confidence interval.
-#' * **NEvents**: Number of eventos in the sample unit.
+#' * **NEvents**: Number of events in the sample unit.
 #' * **Rank**: Rank of aggregation intensity based on _HS-UCL_.
-#' * **FisherJenks3**: Fisher-Jenks classification in three classes (text).
-#' * **FJ3num**: Fisher-Jenks classification in three classes (numeric).
-#' * **FisherJenks5**: Fisher-Jenks classification in five classes (text).
-#' * **FJ5num**: Fisher-Jenks classification in five classes (numeric).
+#' * **FisherJenks3**: Fisher-Jenks classification in three classes (text) based on _HS-UCL_.
+#' * **FJ3num**: Fisher-Jenks classification in three classes (numeric) based on _HS-UCL_.
+#' * **FisherJenks5**: Fisher-Jenks classification in five classes (text) based on _HS-UCL_.
+#' * **FJ5num**: Fisher-Jenks classification in five classes (numeric) based on _HS-UCL_.
+#'
+#' The summary of the species found in each sample unit is composed by the following attributes:
+#'
+#' * **ID**: ID of the sample unit.
+#' * **Sp**: Species name (as from the Events file)
+#' * **NEvents**: Number of events in the sample unit.
 #'
 #' @importFrom magrittr "%>%"
 #'

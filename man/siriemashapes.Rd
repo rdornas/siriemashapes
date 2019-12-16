@@ -23,7 +23,7 @@ Creates complete dataframe/shapefile from Hotspots results obtained from Siriema
 
 The function offers a large list object containing two elements: a spatial data frame with improvements of Siriema's Hotspot Analysis results and a summary of the species found in each sample unit.
 
-The spatial data frame is called \code{shapefile} and it is composed by the following fields:
+The spatial data frame is called \code{shapefile} and it is composed by the following attributes:
 \itemize{
 \item \strong{ID}: ID of the sample unit.
 \item \strong{length}: Length of the sample unit. It is supposed to be very similar to the diameter (double of the radius) of the original Hotspot Analysis.
@@ -34,14 +34,21 @@ The spatial data frame is called \code{shapefile} and it is composed by the foll
 \item \strong{UCL}: Upper confidence limit.
 \item \strong{LCL}: Lower confidence limit.
 \item \strong{HS-UCL}: Subtraction of aggregation intensity by the upper limit of confidence interval. This is the "real" value of aggregation intensity as it already takes into account what is above the confidence interval.
-\item \strong{NEvents}: Number of eventos in the sample unit.
+\item \strong{NEvents}: Number of events in the sample unit.
 \item \strong{Rank}: Rank of aggregation intensity based on \emph{HS-UCL}.
-\item \strong{FisherJenks3}: Fisher-Jenks classification in three classes (text).
-\item \strong{FJ3num}: Fisher-Jenks classification in three classes (numeric).
-\item \strong{FisherJenks5}: Fisher-Jenks classification in five classes (text).
-\item \strong{FJ5num}: Fisher-Jenks classification in five classes (numeric).
+\item \strong{FisherJenks3}: Fisher-Jenks classification in three classes (text) based on \emph{HS-UCL}.
+\item \strong{FJ3num}: Fisher-Jenks classification in three classes (numeric) based on \emph{HS-UCL}.
+\item \strong{FisherJenks5}: Fisher-Jenks classification in five classes (text) based on \emph{HS-UCL}.
+\item \strong{FJ5num}: Fisher-Jenks classification in five classes (numeric) based on \emph{HS-UCL}.
+}
+
+The summary of the species found in each sample unit is composed by the following attributes:
+\itemize{
+\item \strong{ID}: ID of the sample unit.
+\item \strong{Sp}: Species name (as from the Events file)
+\item \strong{NEvents}: Number of events in the sample unit.
 }
 }
 \author{
-Rubem Dornas
+Rubem Dornas \email{rapdornas@gmail.com}
 }
