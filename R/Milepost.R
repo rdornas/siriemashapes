@@ -4,7 +4,7 @@
 #'
 #' @param road Road shapefile.
 #' @param distance Distance of stakes.
-#' @param dist_or_n Selects distance of stakes or number of stakes
+#' @param dist_or_n Selects distance of stakes or number of stakes.
 #'
 #' @export
 

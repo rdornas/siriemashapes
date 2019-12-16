@@ -11,7 +11,7 @@ Milepost(road, distance, dist_or_n = "dist")
 
 \item{distance}{Distance of stakes.}
 
-\item{dist_or_n}{Selects distance of stakes or number of stakes}
+\item{dist_or_n}{Selects distance of stakes or number of stakes.}
 }
 \description{
 Creates a staking system from a line shapefile
