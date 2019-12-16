@@ -8,7 +8,6 @@
 #' @param crs Coordinate system used. Strongly recommended the use of EPSG.
 #'
 #' @importFrom magrittr "%>%"
-#' @importFrom dplyr "as_tibble"
 #'
 #' @export
 
@@ -23,7 +22,7 @@ siriemashapes <- function(line_path,
 
   # staking the line feature ----
   Stake <- Milepost(Road, 1) %>%
-    mutate(km = as.character(m/1000))
+    dplyr::mutate(km = as.character(m/1000))
 
   # reading events feature (same fashion as from Siriema) ----
   Events <- Events(events_path = events_path, crs = crs)
@@ -34,54 +33,58 @@ siriemashapes <- function(line_path,
                                                     check.names = T,
                                                     #fill = T,
                                                     data.table = F) %>%
-    select_if(is.numeric) %>%
+    dplyr::select_if(is.numeric) %>%
     `colnames<-`(c("km", "X", "Y", "HS", "UCL", "LCL")) %>%
-    mutate(`HS-UCL` = HS - UCL,
-           km_round = if_else(duplicated(km), round(km, 3), km)) %>%
-    select(km_round, X, Y, HS, UCL, LCL, `HS-UCL`) %>%
-    mutate_if(is.double, round, 3) %>%
-    as_tibble(.) %>%
-    mutate(km_char = as.character(km_round),
-           km_med_ini = as.character(cumsum(km_round - lag(km_round, default = .$km_round[1])))) %>%
-    left_join(., select(Stake, X, Y, km), by = c("km_med_ini" = "km"), suffix = c("", "_iniline")) %>%
-    left_join(., select(Stake, X, Y, km), by = c("km_char" = "km"), suffix = c("", "_orig")) %>%
-    rowid_to_column(., "ID") %>%
-    select(ID, km_round, km_char, X, Y, X_orig, Y_orig, everything(.))
+    dplyr::mutate(`HS-UCL` = HS - UCL,
+                  km_round = dplyr::if_else(duplicated(km), round(km, 3), km)) %>%
+    dplyr::select(km_round, X, Y, HS, UCL, LCL, `HS-UCL`) %>%
+    dplyr::mutate_if(is.double, round, 3) %>%
+    dplyr::as_tibble(.) %>%
+    dplyr::mutate(km_char = as.character(km_round),
+                  km_med_ini = as.character(cumsum(km_round - dplyr::lag(km_round, default = .$km_round[1])))) %>%
+    dplyr::left_join(., dplyr::select(Stake, X, Y, km),
+                     by = c("km_med_ini" = "km"),
+                     suffix = c("", "_iniline")) %>%
+    dplyr::left_join(., dplyr::select(Stake, X, Y, km),
+                     by = c("km_char" = "km"),
+                     suffix = c("", "_orig")) %>%
+    tibble::rowid_to_column(., "ID") %>%
+    dplyr::select(ID, km_round, km_char, X, Y, X_orig, Y_orig, dplyr::everything(.))
   })
   # cutting df_hotspots ----
   cut <- df_hotspot %>%
-    select(ID, X_iniline, Y_iniline) %>%
-    filter(!is.na(X_iniline)) %>%
-    st_as_sf(., coords = c("X_iniline", "Y_iniline"), remove = F, crs = crs) %>%
-    st_buffer(., dist = 0.00001)
+    dplyr::select(ID, X_iniline, Y_iniline) %>%
+    dplyr::filter(!is.na(X_iniline)) %>%
+    sf::st_as_sf(., coords = c("X_iniline", "Y_iniline"), remove = F, crs = crs) %>%
+    sf::st_buffer(., dist = 0.00001)
 
   # creating shape from files ----
   Shape <- Road %>%
     lwgeom::st_split(., cut) %>%
-    st_collection_extract(., "LINESTRING") %>%
-    mutate(length = as.numeric(round(st_length(.), digits = 3))) %>%
-    filter(length > .001) %>%
-    rowid_to_column(., "ID") %>%
-    left_join(., df_hotspot, by = "ID") %>%
-    mutate(Hot = case_when(`HS-UCL` <= 0 ~ "N",
-                           TRUE ~ "S"))
+    sf::st_collection_extract(., "LINESTRING") %>%
+    dplyr::mutate(length = as.numeric(round(sf::st_length(.), digits = 3))) %>%
+    dplyr::filter(length > .001) %>%
+    tibble::rowid_to_column(., "ID") %>%
+    dplyr::left_join(., df_hotspot, by = "ID") %>%
+    dplyr::mutate(Hot = dplyr::case_when(`HS-UCL` <= 0 ~ "N",
+                                         TRUE ~ "S"))
 
   Shape2 <- Shape %>%
-    st_buffer(., dist = 250, endCapStyle = "FLAT") %>%
-    st_join(., Events) %>%
-    st_drop_geometry(.) %>%
-    count(ID, name = "NEvents") %>%
-    left_join(Shape, ., by = "ID")
+    sf::st_buffer(., dist = 250, endCapStyle = "FLAT") %>%
+    sf::st_join(., Events) %>%
+    sf::st_drop_geometry(.) %>%
+    dplyr::count(ID, name = "NEvents") %>%
+    dplyr::left_join(Shape, ., by = "ID")
 
   shapefile <- FJenks(Shape2)
 
   species_df <- Shape %>%
-    st_buffer(., dist = 250, endCapStyle = "FLAT") %>%
-    select(ID, geometry) %>%
-    st_join(., Events) %>%
-    st_drop_geometry(.) %>%
-    count(ID, Sp, sort = T) %>%
-    filter(!is.na(Sp))
+    sf::st_buffer(., dist = 250, endCapStyle = "FLAT") %>%
+    dplyr::select(ID, geometry) %>%
+    sf::st_join(., Events) %>%
+    sf::st_drop_geometry(.) %>%
+    dplyr::count(ID, Sp, sort = T) %>%
+    dplyr::filter(!is.na(Sp))
 
   message("Done!")
 
