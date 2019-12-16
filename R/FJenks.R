@@ -39,7 +39,7 @@ FJenks <- function(t){
                                             FisherJenks5 == "High" ~ 4L,
                                             FisherJenks5 == "Very High" ~ 5L)) %>%
     dplyr::mutate_if(is.double, round, digits = 3) %>%
-    dplyr::select(ID:km_round, km_ini, km_end, HS:`HS-UCL`, NEvents, Rank, FisherJenks3, FJ3num, FisherJenks5, FJ5num, geometry) %>%
+    dplyr::select(ID:km_round, km_ini, km_end, HS:`HS-UCL`, Hotspot, NEvents, Rank, FisherJenks3, FJ3num, FisherJenks5, FJ5num, geometry) %>%
     dplyr::rename(km_center = km_round) %>%
     dplyr::select(-geometry, dplyr::everything(.)) %>%
     dplyr::arrange(Rank, NEvents, km_ini)

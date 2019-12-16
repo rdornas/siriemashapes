@@ -7,11 +7,11 @@
 siriemashapes(line_path, events_path, hotspot_path, crs)
 }
 \arguments{
-\item{line_path}{Line used in Siriema - txt file.}
+\item{line_path}{Line used in Siriema - txt file path.}
 
-\item{events_path}{Events used in Siriema - txt file.}
+\item{events_path}{Events used in Siriema - txt file path.}
 
-\item{hotspot_path}{Hotspot results obtained from Siriema - txt or dat file.}
+\item{hotspot_path}{Hotspot results obtained from Siriema - txt or dat file path.}
 
 \item{crs}{Coordinate reference system. Strongly recommended the use of EPSG.}
 }
@@ -21,19 +21,25 @@ Creates complete dataframe/shapefile from Hotspots results obtained from Siriema
 \details{
 \strong{WARNING}: For best (and accurate) results, it is strongly recommended that the Hotspot analysis is performed taking into account the number of divisions set to double of the radius.
 
-The function offers a list object containing a spatial data frame with improvements of Siriema's Hotspot Analysis results and a summary of the species found in each sample unit.
+The function offers a large list object containing two elements: a spatial data frame with improvements of Siriema's Hotspot Analysis results and a summary of the species found in each sample unit.
 
 The spatial data frame is called \code{shapefile} and it is composed by the following fields:
 \itemize{
 \item \strong{ID}: ID of the sample unit.
 \item \strong{length}: Length of the sample unit. It is supposed to be very similar to the diameter (double of the radius) of the original Hotspot Analysis.
-\item \strong{km_cntr}: Central km mark of the sample unit.
-\item \strong{km_clc_n}: Initial km mark of the sample unit.
-\item \strong{km_clc_f}: Final km mark of the sample unit.
+\item \strong{km_center}: Central km mark of the sample unit.
+\item \strong{km_ini}: Initial km mark of the sample unit.
+\item \strong{km_end}: Final km mark of the sample unit.
 \item \strong{HS}: Aggregation intensity.
 \item \strong{UCL}: Upper confidence limit.
 \item \strong{LCL}: Lower confidence limit.
 \item \strong{HS-UCL}: Subtraction of aggregation intensity by the upper limit of confidence interval. This is the "real" value of aggregation intensity as it already takes into account what is above the confidence interval.
+\item \strong{NEvents}: Number of eventos in the sample unit.
+\item \strong{Rank}: Rank of aggregation intensity based on \emph{HS-UCL}.
+\item \strong{FisherJenks3}: Fisher-Jenks classification in three classes (text).
+\item \strong{FJ3num}: Fisher-Jenks classification in three classes (numeric).
+\item \strong{FisherJenks5}: Fisher-Jenks classification in five classes (text).
+\item \strong{FJ5num}: Fisher-Jenks classification in five classes (numeric).
 }
 }
 \author{
