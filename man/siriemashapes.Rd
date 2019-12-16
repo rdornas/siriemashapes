@@ -16,7 +16,7 @@ siriemashapes(line_path, events_path, hotspot_path, crs)
 \item{crs}{Coordinate reference system. Strongly recommended the use of EPSG.}
 }
 \description{
-Creates complete dataframe/shapefile from Hotspots results obtained from Siriema software
+Creates complete dataframe/shapefile from Hotspots results obtained from \href{http://www.ufrgs.br/siriema/}{Siriema} software
 }
 \details{
 \strong{WARNING}: For best (and accurate) results, it is strongly recommended that the Hotspot analysis is performed taking into account the number of divisions set to double of the radius.
@@ -43,7 +43,7 @@ The spatial data frame is called \code{shapefile} and it is composed by the foll
 \item \strong{FJ5num}: Fisher-Jenks classification in five classes (numeric) based on \emph{HS-UCL}.
 }
 
-The summary of the species found in each sample unit is composed by the following attributes:
+The summary of the species found in each sample unit is called \code{species_df} and it is composed by the following attributes:
 \itemize{
 \item \strong{ID}: ID of the sample unit.
 \item \strong{Sp}: Species name (as from the Events file)
@@ -51,5 +51,5 @@ The summary of the species found in each sample unit is composed by the followin
 }
 }
 \author{
-Rubem Dornas \email{rapdornas@gmail.com}
+Rubem Dornas \email{(rapdornas@gmail.com)}
 }

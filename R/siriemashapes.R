@@ -1,13 +1,13 @@
 #' siriemashapes
 #'
-#' Creates complete dataframe/shapefile from Hotspots results obtained from Siriema software
+#' Creates complete dataframe/shapefile from Hotspots results obtained from \href{http://www.ufrgs.br/siriema/}{Siriema} software
 #'
 #' @param line_path Line used in Siriema - txt file path.
 #' @param events_path Events used in Siriema - txt file path.
 #' @param hotspot_path Hotspot results obtained from Siriema - txt or dat file path.
 #' @param crs Coordinate reference system. Strongly recommended the use of EPSG.
 #'
-#' @author Rubem Dornas \email{rapdornas@@gmail.com}
+#' @author Rubem Dornas \email{(rapdornas@@gmail.com)}
 #'
 #' @details
 #' **WARNING**: For best (and accurate) results, it is strongly recommended that the Hotspot analysis is performed taking into account the number of divisions set to double of the radius.
@@ -33,7 +33,7 @@
 #' * **FisherJenks5**: Fisher-Jenks classification in five classes (text) based on _HS-UCL_.
 #' * **FJ5num**: Fisher-Jenks classification in five classes (numeric) based on _HS-UCL_.
 #'
-#' The summary of the species found in each sample unit is composed by the following attributes:
+#' The summary of the species found in each sample unit is called `species_df` and it is composed by the following attributes:
 #'
 #' * **ID**: ID of the sample unit.
 #' * **Sp**: Species name (as from the Events file)
