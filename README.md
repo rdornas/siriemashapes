@@ -1,6 +1,6 @@
 # siriemashapes
 
-siriemashapes is a package designed to facilitate the manipulation of data from Hotspot analysis from Siriema software (http://www.ufrgs.br/siriema/).
+siriemashapes is a package designed to facilitate data manipulation of Hotspot analysis from Siriema software (http://www.ufrgs.br/siriema/).
 
 To install the package:
 
