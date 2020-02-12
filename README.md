@@ -16,6 +16,6 @@ siriemashapes has a homonymous function that requires the input of the original 
 
 The event file **must** have the default columns, X, Y, Z, and also the species column, right after column Z.
 
-For the sake of geographical accuracy, analysis can be time consuming, especially on very long highways.
+For the sake of geographical accuracy, analysis can be time consuming, especially on very long roads.
 
 The final result consists in a list containing a spatial data frame from Siriema's Hotspot Analysis as well as a data frame summarising the number of events of each species in each sample unit.
