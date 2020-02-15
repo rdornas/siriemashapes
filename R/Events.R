@@ -7,7 +7,9 @@
 
 
 Events <- function(events_path, crs){
-  read.table(events_path, stringsAsFactors = F) %>%
+  read.delim(events_path,
+             stringsAsFactors = F,
+             header = F) %>%
     dplyr::as_tibble(.) %>%
     tidyr::unite(., col = "Sp", sep = " ", 4:ncol(.)) %>%
     dplyr:: mutate_if(is.character, stringr::str_squish) %>%
