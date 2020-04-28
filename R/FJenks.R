@@ -27,11 +27,7 @@ FJenks <- function(t){
 
   t %>%
     dplyr::mutate(
-      Rank = dplyr::if_else(
-        condition = `HS-UCL` > 0,
-        true = dplyr::min_rank(dplyr::desc(`HS-UCL`)),
-        false = 9999L
-        ),
+      Rank = dplyr::min_rank(dplyr::desc(`HS-UCL`)),
       km_ini = km_round - length/1000/2,
       km_end = km_round + length/1000/2,
       FisherJenks3 = dplyr::case_when(
@@ -64,12 +60,6 @@ FJenks <- function(t){
       )
     ) %>%
     dplyr::mutate_if(is.double, round, digits = 3) %>%
-    dplyr::mutate(
-      Rank = dplyr::case_when(
-        Rank == 9999L ~ NA_integer_,
-        TRUE ~ Rank
-      )
-    ) %>%
     dplyr::select(ID:km_round, km_ini, km_end, HS:`HS-UCL`, Hotspot, NEvents, Rank, FisherJenks3, FJ3num, FisherJenks5, FJ5num, geometry) %>%
     dplyr::rename(km_center = km_round) %>%
     dplyr::select(-geometry, dplyr::everything(.)) %>%
