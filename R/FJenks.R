@@ -12,7 +12,7 @@ FJenks <- function(t){
     dplyr::filter(`HS-UCL` > 0)
 
   suppressWarnings(
-    if (max(t_hot$`HS-UCL` > 0)) {
+    if (max(t_hot$`HS-UCL`) > 0) {
 
       Fisher5 <- classInt::classIntervals(
         var = t_hot$`HS-UCL`,
