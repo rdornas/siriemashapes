@@ -6,7 +6,7 @@
 #'
 #' @importFrom classInt "classIntervals"
 
-FJenks <- function(t){nrow(unique(z[z$`HS-UCL` > 0, ]))
+FJenks <- function(t){
 
   t_hot <- t %>%
     dplyr::filter(`HS-UCL` > 0)
