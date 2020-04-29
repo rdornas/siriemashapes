@@ -6,13 +6,13 @@
 #'
 #' @importFrom classInt "classIntervals"
 
-FJenks <- function(t){
+FJenks <- function(t){nrow(unique(z[z$`HS-UCL` > 0, ]))
 
   t_hot <- t %>%
     dplyr::filter(`HS-UCL` > 0)
 
   suppressWarnings(
-    if (max(t_hot$`HS-UCL`) > 0) {
+    if (nrow(unique(t_hot[t_hot$`HS-UCL` > 0, ])) > 1) {
 
       Fisher5 <- classInt::classIntervals(
         var = t_hot$`HS-UCL`,
