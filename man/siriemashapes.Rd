@@ -37,10 +37,10 @@ The spatial data frame is called \code{shapefile} and it is composed by the foll
 \item \strong{Hotspot}: Information if the sample unit is a hotspot. Y means that \eqn{HS-UCL > 0} and therefore it is already a hotspot.
 \item \strong{NEvents}: Number of events in the sample unit.
 \item \strong{Rank}: Rank of aggregation intensity based on \emph{HS-UCL}.
-\item \strong{FisherJenks3}: Fisher-Jenks classification in three classes (text) based on \emph{HS-UCL}.
-\item \strong{FJ3num}: Fisher-Jenks classification in three classes (numeric) based on \emph{HS-UCL}.
-\item \strong{FisherJenks5}: Fisher-Jenks classification in five classes (text) based on \emph{HS-UCL}.
-\item \strong{FJ5num}: Fisher-Jenks classification in five classes (numeric) based on \emph{HS-UCL}.
+\item \strong{FisherJenks3}: Fisher-Jenks classification in three classes (text) based on \emph{HS-UCL}. Calculation is performed only on rows that already are a hotspot.
+\item \strong{FJ3num}: Fisher-Jenks classification in three classes (numeric) based on \emph{HS-UCL}. Calculation is performed only on rows that already are a hotspot.
+\item \strong{FisherJenks5}: Fisher-Jenks classification in five classes (text) based on \emph{HS-UCL}. Calculation is performed only on rows that already are a hotspot.
+\item \strong{FJ5num}: Fisher-Jenks classification in five classes (numeric) based on \emph{HS-UCL}. Calculation is performed only on rows that already are a hotspot.
 }
 
 The summary of the species found in each sample unit is called \code{species_df} and it is composed by the following attributes:

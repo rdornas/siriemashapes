@@ -28,10 +28,10 @@
 #' * **Hotspot**: Information if the sample unit is a hotspot. Y means that \eqn{HS-UCL > 0} and therefore it is already a hotspot.
 #' * **NEvents**: Number of events in the sample unit.
 #' * **Rank**: Rank of aggregation intensity based on _HS-UCL_.
-#' * **FisherJenks3**: Fisher-Jenks classification in three classes (text) based on _HS-UCL_.
-#' * **FJ3num**: Fisher-Jenks classification in three classes (numeric) based on _HS-UCL_.
-#' * **FisherJenks5**: Fisher-Jenks classification in five classes (text) based on _HS-UCL_.
-#' * **FJ5num**: Fisher-Jenks classification in five classes (numeric) based on _HS-UCL_.
+#' * **FisherJenks3**: Fisher-Jenks classification in three classes (text) based on _HS-UCL_. Calculation is performed only on rows that already are a hotspot.
+#' * **FJ3num**: Fisher-Jenks classification in three classes (numeric) based on _HS-UCL_. Calculation is performed only on rows that already are a hotspot.
+#' * **FisherJenks5**: Fisher-Jenks classification in five classes (text) based on _HS-UCL_. Calculation is performed only on rows that already are a hotspot.
+#' * **FJ5num**: Fisher-Jenks classification in five classes (numeric) based on _HS-UCL_. Calculation is performed only on rows that already are a hotspot.
 #'
 #' The summary of the species found in each sample unit is called `species_df` and it is composed by the following attributes:
 #'
