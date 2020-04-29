@@ -1,5 +1,6 @@
 Package: siriemashapes
 Title: Spatial dataframe and species summary from Siriema's Hotspot results
+Date: 2020-04-28
 Version: 1.0
 Authors@R: 
     person(given = "Rubem",
