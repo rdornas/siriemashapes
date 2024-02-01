@@ -9,13 +9,17 @@ devtools::install_github('rdornas/siriemashapes')
 ```
 
 
-**WARNING**: For best (and accurate) results, it is strongly recommended that the Hotspot analysis be performed taking setting the number of divisions to double the of the radius. Also, there might be differences between the original number of events and the final number of events as the function only comprises events up to 250 m in relation to the road axis.
+**WARNING**: For optimal and accurate results, it is strongly recommended to perform the Hotspot analysis by setting the number of divisions to double the radius. Please note that there might be discrepancies between the initial and final number of events, as the function only includes events within 250 m of the road axis.
+
+The siriemashapes function requires the original files used in Siriema’s Hotspot Analysis (road and events txt files), as well as the original result file obtained from Siriema (txt or dat file). Additionally, the coordinate system information must be provided in the crs argument. This package is compatible only with projected coordinate systems. **It is highly recommended to input the EPSG number in the `siriemashapes` function, which can be found at https://epsg.io/.**
+
+The event file **must** include the default columns, X, Y, Z, followed by the species column.
+
+Due to the need for geographical accuracy, the analysis can be time-consuming, especially for very long roads.
+
+The final output is a list containing a spatial data frame from Siriema’s Hotspot Analysis and a data frame summarizing the number of events for each species in each sample unit.
 
 
-siriemashapes has a homonymous function that requires the input of the original files used in the Siriema's Hotspot Analysis (road and events txt files) as well as the original result file obtained in Siriema (txt or dat file). Last but not least is the coordinate system information in the crs argument. **This package only works with projected coordinate system. It is highly recommend that in `siriemashapes` function you input the EPSG number, which can be searched and found at https://epsg.io/.**
 
-The event file **must** have the default columns, X, Y, Z, and also the species column, right after column Z.
 
-For the sake of geographical accuracy, analysis can be time consuming, especially on very long roads.
 
-The final result consists in a list containing a spatial data frame from Siriema's Hotspot Analysis as well as a data frame summarising the number of events of each species in each sample unit.
